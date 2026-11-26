@@ -1,0 +1,636 @@
+
+/* =========================================
+   TIPOGRAFÍAS
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@400;500;600;700&display=swap');
+
+
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #FFFFFF;
+    color: #444444;
+}
+
+
+/* =========================================
+   MENÚ PRINCIPAL
+========================================= */
+
+header {
+    background-color: #FFFFFF;
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h2 {
+    color: #EC4899;
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #555555;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #EC4899;
+}
+
+
+/* =========================================
+   PORTADA
+========================================= */
+
+.hero {
+    background: linear-gradient(
+        135deg,
+        #FCE7F3,
+        #FDF2F8,
+        #FFFFFF
+    );
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.subtitulo {
+    color: #EC4899;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    color: #BE185D;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    max-width: 850px;
+    margin: 0 auto 25px;
+    line-height: 1.2;
+}
+
+.hero p:not(.subtitulo) {
+    font-size: 18px;
+    color: #666666;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.boton {
+    display: inline-block;
+    background-color: #EC4899;
+    color: #FFFFFF;
+    padding: 16px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    background-color: #DB2777;
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   SECCIONES
+========================================= */
+
+#arreglos,
+#catalogo,
+#tienda {
+    padding: 85px 20px;
+    text-align: center;
+}
+
+#arreglos,
+#tienda {
+    background-color: #FFFFFF;
+}
+
+#catalogo {
+    background-color: #FDF2F8;
+}
+
+#arreglos h2,
+#catalogo h2,
+#tienda h2 {
+    color: #BE185D;
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#arreglos p,
+#catalogo p,
+#tienda p {
+    color: #777777;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CATÁLOGO
+========================================= */
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.producto {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.producto img {
+    width: 100%;
+    height: 320px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 7px;
+    cursor: zoom-in;
+}
+
+.producto h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #713B58;
+    margin: 10px 0 7px;
+}
+
+.producto p {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 0 0 8px;
+}
+
+.producto span {
+    font-family: 'Lato', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #ec4899;
+}
+
+
+/* =========================================
+   VISOR DE IMÁGENES AMPLIADAS
+========================================= */
+
+.visor {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.visor.activo {
+    display: flex;
+}
+
+.visor img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    background: transparent;
+}
+
+.cerrar-visor {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    z-index: 10000;
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   PIE DE PÁGINA
+========================================= */
+
+footer {
+    background-color: #FCE7F3;
+    text-align: center;
+    padding: 40px 20px;
+    color: #A21CAF;
+}
+
+footer h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   PORTADA DE PIÑATERÍA LUMA
+========================================= */
+
+.portada {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    padding: 65px 7%;
+    background: #fff4f8;
+}
+
+.portada-texto {
+    padding: 20px;
+}
+
+.portada-etiqueta,
+.tienda-etiqueta {
+    display: inline-block;
+    color: #d63384;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.portada-texto h1 {
+    color: #713b58;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.portada-texto h1 span {
+    color: #d63384;
+    display: block;
+}
+
+.portada-texto p {
+    color: #765b69;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.portada-imagen {
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 10px 30px rgba(120, 50, 85, 0.15);
+}
+
+.boton-portada {
+    display: inline-block;
+    padding: 14px 25px;
+    background: #d63384;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.boton-portada:hover {
+    background: #b9236d;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   CARRUSEL AUTOMÁTICO DE LA PORTADA
+========================================= */
+
+.carrusel-tienda {
+    position: relative;
+    isolation: isolate;
+}
+
+.carrusel-tienda .imagen-carrusel {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carrusel-tienda .imagen-carrusel.activa {
+    opacity: 1;
+}
+
+
+/* =========================================
+   CONOCE NUESTRA TIENDA
+========================================= */
+
+.seccion-tienda {
+    padding: 75px 7%;
+    background: white;
+}
+
+.tienda-encabezado {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.tienda-encabezado h2 {
+    color: #713b58;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.tienda-encabezado p {
+    color: #765b69;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.tienda-galeria {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.foto-tienda {
+    height: 380px;
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: 0 7px 22px rgba(120, 50, 85, 0.12);
+}
+
+.foto-tienda img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.foto-tienda:hover img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   UBICACIÓN
+========================================= */
+
+.tienda-ubicacion {
+    max-width: 1100px;
+    margin: 35px auto 0;
+    padding: 30px;
+    background: #fff4f8;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.ubicacion-texto h3 {
+    color: #713b58;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.ubicacion-texto p {
+    color: #765b69;
+    line-height: 1.6;
+}
+
+.boton-maps {
+    display: inline-block;
+    background: #d63384;
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-align: center;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+
+.boton-maps:hover {
+    background: #b9236d;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   ADAPTACIÓN A CELULARES
+========================================= */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero {
+        padding: 80px 20px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p:not(.subtitulo) {
+        font-size: 16px;
+    }
+
+    #arreglos h2,
+    #catalogo h2,
+    #tienda h2 {
+        font-size: 27px;
+    }
+
+    .portada {
+        grid-template-columns: 1fr;
+        padding: 40px 5%;
+        gap: 25px;
+    }
+
+    .portada-texto {
+        padding: 10px;
+    }
+
+    .portada-imagen {
+        height: 350px;
+    }
+
+    .tienda-galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .foto-tienda {
+        height: 320px;
+    }
+
+    .tienda-ubicacion {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .boton-maps {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tienda-encabezado h2 {
+        font-size: 30px;
+    }
+
+    .productos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .producto img {
+        height: 220px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .productos {
+        grid-template-columns: 1fr;
+    }
+
+    .producto img {
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .portada-imagen {
+        height: 280px;
+    }
+
+    .foto-tienda {
+        height: 280px;
+    }
+
+    .seccion-tienda {
+        padding: 55px 5%;
+    }
+}
+
+/* CONTACTO Y WHATSAPP */
+.contacto-info {
+    margin: 18px 0;
+}
+
+.contacto-info p {
+    margin-bottom: 12px;
+    color: #765b69;
+}
+
+.enlace-whatsapp {
+    display: inline-block;
+    color: #BE185D;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #EC4899;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.enlace-whatsapp:hover {
+    background-color: #EC4899;
+    color: white;
+}
+
+.derechos {
+    margin-top: 20px;
+    font-size: 13px;
+}
